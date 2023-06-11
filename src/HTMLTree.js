@@ -77,7 +77,6 @@ const HTMLTree = class {
 	 *         obj.vDom.tree:             []
 	 */
 	constructor(args) {
-		console.log('tpl:', args.templateContent);
 		this.vDom.tree = this.#compile(args.templateContent);
 	}
 
@@ -158,8 +157,7 @@ const HTMLTree = class {
 					closeTagName = html.substring(2, endPos);
 					closeTagCfg = activeChain.pop();
 					//activeChainPaths.pop();
-					//console.log('closed tag:', closeTagName, closeTagCfg.tagName);
-					//console.log('html:', html);
+					console.log('closed tag:', closeTagName, closeTagCfg.tagName);
 					if (closeTagCfg && closeTagCfg.tagName === closeTagName) {
 						html = html.substring(endPos + 1);
 						activeChainLn = activeChain.length;
@@ -219,7 +217,7 @@ const HTMLTree = class {
 						htmlLn = html.length;
 						for (i = 0; i < htmlLn; i++) {
 							char = html[i];
-							//console.log(i, char, attrQuote);
+							console.log(i, char, attrQuote);
 							if (attrQuote) {					// Если есть открывающая кавычка, то захватываем всё, пока не встретим закрывающую
 								if (char === attrQuote) {
 									// Перед закрывающей кавычкой может быть \\\.
@@ -229,11 +227,11 @@ const HTMLTree = class {
 										attrValueEscCount++;
 									}
 									if (attrValueEscCount % 2 === 0) {	//Кавычка реально закрылась
-										attrValue = html.substring(attrValuePosBegin, i - attrValuePosBegin);
+										attrValue = html.substring(attrValuePosBegin, i);
 										attrs[attrName.toLowerCase()] = {value: attrValue, type: attrType};
 										//html = html.substring(i+1);
 										attrQuote = null;
-										//console.log('- [attr] taken value:', attrName, attrValue);
+										console.log('- [attr] taken value:', attrName, attrValue);
 
 										//Следующий символ должен быть либо закрывающим тег, либо разделяющим аттрибут
 										nextChar = html[i + 1];
@@ -256,7 +254,7 @@ const HTMLTree = class {
 									}
 								} else {
 									if (char === '=') {	// Название собрали, дальше будет значение
-										attrName = html.substring(attrNamePosBegin, i - attrNamePosBegin);
+										attrName = html.substring(attrNamePosBegin, i);
 										attrTakeName = false;
 										i++;
 										attrValuePosBegin = i + 1;
