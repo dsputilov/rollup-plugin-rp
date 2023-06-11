@@ -1,0 +1,27 @@
+{
+	"name": "rollup-plugin-rp",
+	"version": "0.0.1",
+	"publishConfig": {
+		"access": "public"
+	},
+	"description": "Compile app to timeliquid application",
+	"license": "MIT",
+	"repository": {
+		"url": "rollup/plugins",
+		"directory": "packages/image"
+	},
+	"author": "Xman",
+	"homepage": "//TODO",
+	"bugs": "//TODO",
+	"main": "dist/index.js",
+	"module": "dist/index.es.js",
+	"engines": {
+		"node": ">= 8.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@msgpack/msgpack": "^2.7.2",
+		"html-minifier": "^4.0.0",
+		"object-live": "^1.0.4"
+	}
+}
