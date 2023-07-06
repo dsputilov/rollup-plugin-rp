@@ -17,7 +17,7 @@ const HTMLBuilder = class {
 
 	build() {
 		const source =
-			`import RP from '/srv/redpilule/src/index.js';` +
+			`import RP from 'redpilule';` +
 			Object.entries(this.#templates).map(([templateName, tree]) => {
 			return `
 				let ${templateName} = class extends RP {

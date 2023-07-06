@@ -27,6 +27,8 @@ let modelRefsObservedReg = new RegExp('(' + modelRefsObserved.join('|') + ')(\\.
 //var modelLinkObservedReg = new RegExp('^(' + modelRefsObserved.join('|') +")(\\.|$)([\\w\\.]+)?$");
 let bindMethods = {
 	onclick: 1,
+	onkeydown: 1,
+	onkeypress: 1,
 	ondblclick: 1,
 	onmousedown: 1,
 	onmouseover: 1,

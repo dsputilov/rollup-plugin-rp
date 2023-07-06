@@ -4,15 +4,13 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"description": "Compile app to timeliquid application",
+	"description": "Compile redpilule application",
 	"license": "MIT",
 	"repository": {
-		"url": "rollup/plugins",
-		"directory": "packages/image"
+		"url": "rollup/plugins"
 	},
 	"author": "Xman",
-	"homepage": "//TODO",
-	"bugs": "//TODO",
+	"homepage": "https://github.com/dsputilov/rollup-plugin-rp",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
 	"engines": {
@@ -22,6 +20,7 @@
 	"dependencies": {
 		"@msgpack/msgpack": "^2.7.2",
 		"html-minifier": "^4.0.0",
-		"object-live": "^1.0.4"
+		"object-live": "^1.0.4",
+		"redpilule": "^1.0.3"
 	}
 }
