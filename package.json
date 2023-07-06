@@ -1,17 +1,14 @@
 {
 	"name": "rollup-plugin-rp",
-	"version": "1.0.1",
-	"publishConfig": {
-		"access": "public"
-	},
-	"description": "Compile redpilule application",
+	"version": "1.0.2",
+	"main": "./src/index.js",
+	"description": "Compiler for redpilule application",
 	"license": "MIT",
 	"repository": {
 		"url": "rollup/plugins"
 	},
 	"author": "Xman",
 	"homepage": "https://github.com/dsputilov/rollup-plugin-rp",
-	"main": "dist/index.js",
 	"module": "dist/index.es.js",
 	"engines": {
 		"node": ">= 8.0.0"
