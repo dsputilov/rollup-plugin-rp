@@ -38,7 +38,8 @@ let bindMethods = {
 	ondragstart: 1,
 	ondrag: 1,
 	ondragstop: 1,
-	onclickout: 1
+	onclickout: 1,
+	oncontextmenu: 1
 };
 
 const HTMLTree = class {
