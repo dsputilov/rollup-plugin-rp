@@ -382,6 +382,7 @@ const HTMLTree = class {
 		let staticData = [];
 		let objects = [];
 		let depends = [];
+		let modelOut = [];
 		let valueOut = query;		//this.#compilerGet(query);
 
 		//TODO: проверить что валидный json. Сейчас можно передать '{a:1}abcd' и оно обработается
@@ -426,12 +427,16 @@ const HTMLTree = class {
 						valueOutRender: str,			//this.#compilerGet(str),
 						jsonInnerPath: path
 					});
+					modelOut.push({
+						refName: refName,
+						modelPath: refPath
+					});
 				});
 			}
 			return '';
 		};
 		childParse(query, '');
-		return {valueOut: valueOut, modelDepends: depends, type: 'json'};
+		return {valueOutRender: valueOut, modelDepends: depends, modelOut: modelOut, type: 'json'};
 	}
 
 

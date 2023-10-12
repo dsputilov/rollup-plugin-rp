@@ -78,13 +78,11 @@ let CSSBuilder = class {
 
 		return `
 			const rules = ` + JSON.stringify(this.#rules) + `;
+			let cssStyle;
 			const css = {
 				install:() => {
-					let cssStyle = document.body.querySelector("style")
-					if (!cssStyle) {
-						cssStyle = document.createElement("style");
-						document.head.appendChild(cssStyle);
-					}
+					cssStyle = document.createElement("style");
+					document.head.appendChild(cssStyle);
 					const cssStyleSheet = cssStyle.sheet;
 					rules.forEach(ruleCfg => {
 						//console.log('%cselector:', 'background:green;color:white;', ruleCfg.selector);
@@ -93,6 +91,9 @@ let CSSBuilder = class {
 					});
 					//files.push.apply(files, data.files);
 					//console.log('css installed [` + this.#path + `]:', rules);
+				},
+				remove:() => {
+					if (cssStyle) {document.head.removeChild(cssStyle);}
 				}
 			};
 			export default css;
