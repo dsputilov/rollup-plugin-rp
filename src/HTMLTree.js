@@ -270,6 +270,9 @@ const HTMLTree = class {
 											//i++;
 											//attrValuePosBegin = i + 1;
 											//attrQuote = html[i];
+										} else if (lastAttrNameChar === '~') {
+											attrType = 'compotFn';
+											attrName = attrName.substring(0, attrName.length - 1);
 										} else {
 											attrType = 'string';
 										}
@@ -316,24 +319,27 @@ const HTMLTree = class {
 						}
 					} else {
 						let attrsCompiled = {};
+						const tagType = /-/.test(tagName) ? 'component' : 'tag'
 						Object.entries(attrs).forEach(([attrName, attr]) => {
-							if (bindMethods[attrName]) {
-								attrsCompiled[attrName] = {
-									type: 'event',
-									fn: attr.value				//this.#compilerGet(attr.value)
-								};
-								delete attrs[attrName];
-							} else {
-								if (attr.type === 'json') {
-									//console.warn('JSON attr:', attr);
-									attrsCompiled[attrName] = this.#queryJsonCompile(attr.value);
-								} else if (attr.type === 'string') {
+							if (attr.type === 'string') {
+								if (tagType==='tag' && bindMethods[attrName]) {
+									attrsCompiled[attrName] = {
+										type: 'event',
+										fn: attr.value				//this.#compilerGet(attr.value)
+									};
+									delete attrs[attrName];
+								} else {
 									attrsCompiled[attrName] = this.#queryStringCompile(attr.value);
 								}
+							} else if (attr.type === 'json') {
+								//console.warn('JSON attr:', attr);
+								attrsCompiled[attrName] = this.#queryJsonCompile(attr.value);
+							} else if (attr.type === 'compotFn') {
+								attrsCompiled[attrName] = {fn: attr.value, type: 'fn'};
 							}
 						});
 						tagCfg = {
-							type: /-/.test(tagName) ? 'component' : 'tag',
+							type: tagType,
 							tagName: tagName,
 							attrs: attrsCompiled,
 							childNodes: []
