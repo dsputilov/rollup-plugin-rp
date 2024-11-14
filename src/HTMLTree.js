@@ -12,12 +12,13 @@ let uid = (() => {
 
 let modelRefProps = {
 	m: {observed: true},
-	model: {observed: true}
+	model: {observed: true},
+	g: {observed: true},
 };
 
 let modelRefAlias = {
 	model: "m",
-	storage: "s"
+	global: "g"
 }
 
 let modelRefsObserved = Object.keys(modelRefProps).filter(function (propName) {
