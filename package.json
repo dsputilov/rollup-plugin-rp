@@ -1,6 +1,6 @@
 {
 	"name": "rollup-plugin-rp",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"main": "./src/index.js",
 	"description": "Compiler for redpilule application",
 	"license": "MIT",
@@ -16,7 +16,7 @@
 	"type": "module",
 	"dependencies": {
 		"@msgpack/msgpack": "^2.7.2",
-		"object-live": "^1.0.6",
-		"redpilule": "^1.0.10"
+		"object-live": "^1.0.7",
+		"redpilule": "^1.0.11"
 	}
 }
